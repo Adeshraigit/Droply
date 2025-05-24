@@ -2,7 +2,6 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";   
 import { files } from "@/lib/db/schema";
 import { NextResponse } from "next/server";
-import path from "path";
 
 export async function POST(request: Request) {
     try {

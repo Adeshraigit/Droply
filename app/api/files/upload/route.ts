@@ -16,7 +16,9 @@ const imagekit = new ImageKit({
 export async function POST(request: NextRequest) {
    try {
     const { userId }  = await auth()
+    
     if(!userId) {
+        console.log("UserID", userId)
      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
@@ -47,7 +49,7 @@ export async function POST(request: NextRequest) {
     }
 
     if(!parentId) {
-        return NextResponse.json({ error: "Parent folder not found" }, { status: 401 })
+        return NextResponse.json({ error: "Parent folder not found" }, { status: 404 })
     }
 
     if(!file.type.startsWith("image/") && file.type !== "application/pdf") {
